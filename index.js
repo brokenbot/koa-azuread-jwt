@@ -33,7 +33,7 @@ module.exports = function init (tenantId, applicationId) {
     }
     // check for authorization header
     if (this.get('authorization')) {
-      jwtEncoded = this.header.get('authorization').split(' ')[1]
+      jwtEncoded = this.get('authorization').split(' ')[1]
     }
 
     if (jwtEncoded) {
