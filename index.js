@@ -66,7 +66,7 @@ module.exports = function init (tenantId, applicationId) {
         return
       }
       try {
-        this.user = yield validate(jwtEncoded, cert.cert, options)
+        this.state.user = yield validate(jwtEncoded, cert.cert, options)
       } catch (err) {
         this.body = err
         this.status = 401

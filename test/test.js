@@ -4,9 +4,9 @@ var appid = process.env.APPID
 console.log({ app_id: appid, tenant_id: tenantid })
 
 var koa = require('koa')
-var koaJWT = require('./')
+var koaJWT = require('../')
 
-var azureAD = koaJWT(appid, tenantid)
+var azureAD = koaJWT(tenantid, appid)
 var app = koa()
 
 app.use(azureAD)
