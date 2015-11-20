@@ -28,8 +28,8 @@ module.exports = function init (tenantId, applicationId) {
   return function * koa_azuread_jwt (next) {
     let jwtEncoded
     // check query and authorization header
-    if (this.query.jwt) {
-      jwtEncoded = this.query.jwt
+    if (this.query.jwt || this.query.token) {
+      jwtEncoded = this.query.jwt || this.query.token
     }
     // check for authorization header
     if (this.get('authorization')) {
