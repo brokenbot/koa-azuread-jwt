@@ -29,12 +29,10 @@ module.exports = function init (tenantId, applicationId) {
     let jwtEncoded
     // check query and authorization header
     if (this.query.jwt) {
-      console.log('using jwt in query')
       jwtEncoded = this.query.jwt
     }
     // check for authorization header
     if (this.get('authorization')) {
-      console.log('using jwt in authorization header')
       jwtEncoded = this.header.get('authorization').split(' ')[1]
     }
 
@@ -70,7 +68,6 @@ module.exports = function init (tenantId, applicationId) {
       try {
         this.user = yield validate(jwtEncoded, cert.cert, options)
       } catch (err) {
-        console.log('validate error: ' + err)
         this.body = err
         this.status = 401
         return
